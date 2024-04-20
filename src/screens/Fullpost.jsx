@@ -3,20 +3,16 @@ import { postContext } from "../utils/Context";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Loading from "./Loading";
 import instance from "../utils/Axios";
+import Addcomment from "../components/Addcomment";
+import Comment from "../components/Comment";
 
 const Fullpost = () => {
-  const { post, setPost } = useContext(postContext);
+  const { post, setPost, comments, setComments } = useContext(postContext);
 
   const [singlePost, setsinglePost] = useState(null);
 
   const { id } = useParams();
   const navigate = useNavigate();
-
-  const color = () => {
-    return `rgba(${(Math.random() * 255).toFixed()},${(
-      Math.random() * 255
-    ).toFixed()},${(Math.random() * 255).toFixed()},0.4)`;
-  };
 
   useEffect(() => {
     if (post && Array.isArray(post) && id) {
@@ -42,15 +38,14 @@ const Fullpost = () => {
     }
   };
 
+  console.log(comments);
+
   return singlePost ? (
-    <div className="h-screen max-w-[800px] flex flex-col gap-5 m-auto p-10 bg-zinc-100">
-      <div
-        style={{ backgroundColor: color() }}
-        className="image w-full h-[50%] text-4xl font-bold flex items-center justify-center text-white rounded-lg"
-      >
+    <div className="h-max max-w-[800px] flex flex-col gap-5 m-auto p-10 bg-zinc-100">
+      <div className="image w-full h-[15rem] text-4xl font-bold flex items-center justify-center bg-red-300 text-white rounded-lg">
         POST
       </div>
-      <div className="title text-2xl font-semibold text-green-500">
+      <div className="title text-2xl font-semibold text-blue-500">
         {singlePost.title}
       </div>
       <div className="body w-[80%] text-zinc-500">{singlePost.body}</div>
@@ -68,7 +63,19 @@ const Fullpost = () => {
           Delete
         </button>
       </div>
-      <div className="comment"></div>
+      <div className="commentSection">
+        <Addcomment postId={id} />
+
+        {comments ? (
+          comments
+            .filter((comment) => comment.postId === id)
+            .map((comment, index) => (
+              <Comment key={index} id={comment.id} comment={comment} />
+            ))
+        ) : (
+          <h2>No Comments</h2>
+        )}
+      </div>
     </div>
   ) : (
     <Loading />
