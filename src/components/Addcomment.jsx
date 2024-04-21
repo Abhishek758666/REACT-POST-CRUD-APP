@@ -1,31 +1,31 @@
 import React, { useContext, useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 import instance from "../utils/Axios";
 import { postContext } from "../utils/Context";
 
-const Addcomment = ({ postId }) => {
-  const { setComments } = useContext(postContext);
-  const [comment, setComment] = useState("");
-  const [nextId, setNextId] = useState(501);
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-  useEffect(() => {
-    setNextId(501);
-  }, [postId]);
+const Addcomment = ({ postId }) => {
+  const { comments, setComments } = useContext(postContext);
+  const [comment, setComment] = useState("");
+
   const handleForm = async (e) => {
     e.preventDefault();
     if (comment.trim() === "") {
-      alert("Please enter a comment.");
+      const notify = () => toast.error("Comment cannot be empty");
+      notify();
     } else {
       try {
         const response = await instance.post(`/posts/${postId}/comments`, {
           postId: postId,
-          id: nextId,
+          id: uuidv4(),
           name: "Demo user",
           email: "example@ex.com",
           body: comment,
         });
         setComments((prev) => [...prev, response.data]);
         setComment("");
-        setNextId((prevId) => prevId + 1);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -38,6 +38,8 @@ const Addcomment = ({ postId }) => {
 
   return (
     <div className="w-full ">
+      <ToastContainer />
+
       <form className="flex  gap-4" onSubmit={handleForm}>
         <input
           type="text"

@@ -9,7 +9,7 @@ const App = () => {
   const { pathname } = useLocation();
 
   return (
-    <div>
+    <div className="bg-gradient-to-r from-zinc-100  to-zinc-50">
       {pathname != "/" ? <Navbar /> : null}
       <Routes>
         <Route path="/" element={<Home />} />

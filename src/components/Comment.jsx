@@ -1,27 +1,31 @@
 import React, { useContext } from "react";
-import { MdDeleteOutline } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 import { postContext } from "../utils/Context";
+import instance from "../utils/Axios";
 
-const Comment = ({ id, comment }) => {
+const Comment = ({ postId, id, comment }) => {
   const { comments, setComments } = useContext(postContext);
 
-  const handleDelete = () => {
-    // Filter out the comment with the specified id
-    const filteredComments = comments.filter((value) => value.id !== id);
-    // Update the comments state with the filtered array
-    setComments(filteredComments);
+  const handleDelete = async () => {
+    try {
+      await instance.delete(`/comments/${id}`);
+      const filteredComments = comments.filter((value) => value.id !== id);
+      setComments(filteredComments);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
-    <div className="p-4 bg-white rounded-lg mt-4 relative">
+    <div className="p-4 bg-zinc-50 border-2 rounded-lg mt-4 relative">
       <div className="flex gap-3 items-center">
-        <span className="w-[20px] h-[20px] rounded-full bg-zinc-300 inline-block"></span>
+        <span className="w-[40px] h-[40px] rounded-full bg-zinc-300 inline-block"></span>
         <p>{comment.name}</p>
       </div>
       <div className="email text-zinc-400">{comment.email}</div>
       <div className="body">{comment.body}</div>
       <button onClick={handleDelete}>
-        <MdDeleteOutline className="border-2 p-1 border-red-500 text-red-500 text-[2rem] rounded-lg absolute top-3 right-3" />
+        <MdDelete className=" text-red-500 text-[1.5rem] rounded-lg absolute top-3 right-3" />
       </button>
     </div>
   );

@@ -4,7 +4,7 @@ export const postContext = createContext();
 
 const Context = ({ children }) => {
   const [post, setPost] = useState({});
-  const [comments, setComments] = useState({});
+  const [comments, setComments] = useState(null);
 
   const getPost = async () => {
     let response1 = await instance.get("./posts");
