@@ -58,7 +58,7 @@ const SecNav = ({ post }) => {
         />
         <div
           ref={listRef}
-          className={`w-[50vw] rounded-lg border-2 bg-white searchList fixed h-max top-12 ${
+          className={`w-[50vw] rounded-lg border-2 max-h-[90vh] overflow-y-auto bg-white searchList fixed h-max top-20 ${
             searchList.length > 0 ? "" : "hidden"
           }`}
         >

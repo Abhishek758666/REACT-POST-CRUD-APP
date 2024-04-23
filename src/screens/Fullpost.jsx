@@ -47,7 +47,10 @@ const Fullpost = () => {
       </div>
       <div className="body w-[80%] text-zinc-500">{singlePost.body}</div>
       <div className="btns flex justify-between">
-        <Link to="/" className=" py-1 text-3xl text-blue-500 rounded-lg">
+        <Link
+          to={`/edit/${id}`}
+          className=" py-1 text-3xl text-blue-500 rounded-lg"
+        >
           <MdEditDocument />
         </Link>
         <button

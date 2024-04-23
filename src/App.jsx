@@ -4,6 +4,7 @@ import Home from "./screens/Home";
 import Navbar from "./components/Navbar";
 import Create from "./screens/Create";
 import Fullpost from "./screens/Fullpost";
+import Editpost from "./components/Editpost";
 
 const App = () => {
   const { pathname } = useLocation();
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<Create />} />
         <Route path="/fullpost/:id" element={<Fullpost />} />
+        <Route path="/edit/:id" element={<Editpost />} />
       </Routes>
     </div>
   );

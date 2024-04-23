@@ -11,7 +11,6 @@ const Posts = () => {
     return <Loading />;
   }
 
-  console.log(post);
   return (
     <div className="px-5 py-3 flex flex-wrap gap-4 justify-center mt-5">
       {post.map((value, index) => {

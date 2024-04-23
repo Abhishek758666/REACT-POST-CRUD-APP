@@ -19,7 +19,6 @@ const Addcomment = ({ postId }) => {
       try {
         const response = await instance.post(`/posts/${postId}/comments`, {
           postId: postId,
-          id: uuidv4(),
           name: "Demo user",
           email: "example@ex.com",
           body: comment,

@@ -3,7 +3,7 @@ import instance from "./Axios";
 export const postContext = createContext();
 
 const Context = ({ children }) => {
-  const [post, setPost] = useState({});
+  const [post, setPost] = useState(null);
   const [comments, setComments] = useState(null);
 
   const getPost = async () => {
