@@ -6,7 +6,7 @@ import Loading from "./Loading";
 import instance from "../utils/Axios";
 import Addcomment from "../components/Addcomment";
 import Comment from "../components/Comment";
-import { MdEditDocument } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
 const Fullpost = () => {
@@ -51,7 +51,7 @@ const Fullpost = () => {
           to={`/edit/${id}`}
           className=" py-1 text-3xl text-blue-500 rounded-lg"
         >
-          <MdEditDocument />
+          <FaEdit />
         </Link>
         <button
           onClick={() => handleDelete(singlePost.id)}

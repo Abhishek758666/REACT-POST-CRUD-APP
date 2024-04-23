@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { MdDelete } from "react-icons/md";
-import { MdEditDocument } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 
 import { postContext } from "../utils/Context";
 import instance from "../utils/Axios";
@@ -72,7 +72,7 @@ const Comment = ({ postId, id, comment }) => {
         </button>
       ) : (
         <button onClick={() => setEditing(true)}>
-          <MdEditDocument className=" text-blue-500 text-[1.5rem] rounded-lg absolute top-3 right-12" />
+          <FaEdit className=" text-blue-500 text-[1.5rem] rounded-lg absolute top-3 right-12" />
         </button>
       )}
     </div>
