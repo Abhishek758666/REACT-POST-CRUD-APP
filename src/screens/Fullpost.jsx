@@ -38,7 +38,7 @@ const Fullpost = () => {
   };
 
   return singlePost && comments ? (
-    <div className="h-max max-w-[800px] flex flex-col gap-5 m-auto p-10 bg-white">
+    <div className="min-h-[92vh] max-w-[800px] flex flex-col gap-5 m-auto p-10 bg-white">
       <div className="image w-full h-[15rem] text-4xl font-bold flex items-center justify-center bg-blue-300 text-white rounded-lg">
         POST
       </div>
