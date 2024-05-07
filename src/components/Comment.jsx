@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+import { FaRegUser } from "react-icons/fa";
 
 import { postContext } from "../utils/Context";
 import instance from "../utils/Axios";
@@ -46,7 +47,9 @@ const Comment = ({ postId, id, comment }) => {
   return (
     <div className="p-4 bg-zinc-50 border-2 rounded-lg mt-4 relative">
       <div className="flex gap-3 items-center">
-        <span className="w-[40px] h-[40px] rounded-full bg-zinc-300 inline-block"></span>
+        <span className="w-[40px] h-[40px] rounded-full bg-zinc-500 flex justify-center text-white items-center">
+          <FaRegUser />
+        </span>
         <p>{comment.name}</p>
       </div>
       <div className="email text-zinc-400">{comment.email}</div>

@@ -80,7 +80,7 @@ const Editpost = () => {
             <textarea
               placeholder="Body"
               name="body"
-              className="px-3 border-2 py-1 rounded-lg min-h-[20vh]"
+              className="px-3 border-2 py-1 rounded-lg h-max"
               value={npost.body}
               onChange={handleChange}
             />

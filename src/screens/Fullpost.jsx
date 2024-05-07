@@ -18,12 +18,9 @@ const Fullpost = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (post && Array.isArray(post) && id) {
-      const foundPost = post.find((p) => p.id == id);
-      if (foundPost) {
-        setsinglePost(foundPost);
-      }
-    }
+    const foundPost = post && post.find((p) => p.id == id);
+
+    setsinglePost(foundPost);
   }, [id, post]);
 
   const handleDelete = async (id) => {
