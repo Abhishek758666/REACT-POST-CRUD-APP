@@ -47,7 +47,7 @@ const Comment = ({ postId, id, comment }) => {
   return (
     <div className="p-4 bg-zinc-50 border-2 rounded-lg mt-4 relative">
       <div className="flex gap-3 items-center">
-        <span className="w-[40px] h-[40px] rounded-full bg-zinc-500 flex justify-center text-white items-center">
+        <span className="w-[40px] h-[40px] rounded-full bg-zinc-400 flex justify-center text-white items-center">
           <FaRegUser />
         </span>
         <p>{comment.name}</p>
